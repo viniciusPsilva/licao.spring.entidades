@@ -1,5 +1,7 @@
 package com.licao.spring.Entidades.models;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +24,10 @@ public class Produto {
 	@Size(min = 1, max = 60)
 	private String descricao;
 	
-	@Column(nullable = false,columnDefinition = "boolean default true")
-	private boolean disponivel = true;
+	private BigDecimal valor;
+	
+	@Column(nullable = false,columnDefinition = "boolean default false")
+	private boolean disponivel = false;
 
 	public Integer getId() {
 		return id;
@@ -48,4 +52,22 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public boolean isDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
+	}
+	
+	
 }
