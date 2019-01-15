@@ -24,6 +24,7 @@ public class Produto {
 	@Size(min = 1, max = 60)
 	private String descricao;
 	
+	@Column(nullable = false)
 	private BigDecimal valor;
 	
 	@Column(nullable = false,columnDefinition = "boolean default false")
