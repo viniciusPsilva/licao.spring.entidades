@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Venda {
@@ -19,9 +19,9 @@ public class Venda {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Item> itens = new ArrayList<>();
-	
+
 	@Column(nullable = false)
 	private BigDecimal valor = new BigDecimal("0.0");
 
@@ -47,6 +47,13 @@ public class Venda {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public Venda calcularValorTotal() {
+		double total = this.getItens().stream().mapToDouble(item -> item.calcularvalorTotal().doubleValue()).sum();
+		this.setValor(new BigDecimal(total));
+		
+		return this;
 	}
 
 }

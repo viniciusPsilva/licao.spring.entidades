@@ -1,5 +1,7 @@
 package com.licao.spring.Entidades.models;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,6 +44,10 @@ public class Item {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public BigDecimal calcularvalorTotal() {
+		return this.getProduto().getValor().multiply(new BigDecimal(quantidade));
 	}
 
 }
