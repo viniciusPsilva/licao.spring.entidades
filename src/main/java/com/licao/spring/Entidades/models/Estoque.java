@@ -15,7 +15,7 @@ import com.licao.spring.Entidades.enuns.StatusEstoque;
 public class Estoque {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@OneToOne
